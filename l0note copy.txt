@@ -1,0 +1,167 @@
+=> install firebase
+
+npm init -y
+
+npm install firebase    (or)    npm install firebase@latest
+
+
+=> install express.js server
+
+npm install express     (or)    npm install express@latest
+
+
+=> install vite js
+
+- installation
+    npm install --save-dev vite
+
+- create a new file named 'vite.config.js'
+    import { defineConfig } from 'vite'
+
+    export default defineConfig({
+        root: './src',
+        build:{
+            outDir: '../dist' // define output directory to build bundled files
+        }
+    })
+
+- update/edit package.json
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+
+- Run Build the app for production
+    npm run build
+
+- Run vite in development server
+    npm run dev
+
+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+=> Authentication For Web from firebase
+https://firebase.google.com/ > docs > overview > Firebase fundamentals > Web
+> Available Firebase services for web > Authentication for Web
+
+import { getAuth } from "firebase/auth";
+...
+const auth = getAuth(app);
+
+=> Sign up authentication
+NOTE :: have to turn on 'sign-in method' in firebase console / if not, will get error
+
+=> Enable Email/Password Authentication
+Authentication > Sign-in Method
+> Email/Password - check
+> Email Link    <-- This is for sending a link to login / can't make with fake account
+> click 'save'
+
+=> Enable Google Sign-in Authentication
+Authentication > Sign-in Method > Add new provider
+> Public-facing name for project    <-- this is project-id
+> Support email for project         <-- this is firebase account email
+> click 'save'
+
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
+const auth = getAuth();
+createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        const user = userCredential.user;
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+    });
+
+
+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+=> Customize email template
+Authentication > Templates > click edit pen
+
+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+=> Install Tailwind CSS
+https://tailwindcss.com/docs/installation/using-postcss
+
+1. Install Tailwind CSS
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init    <-- this will create a filed called 'tailwind.config.js'
+
+2. Add Tailwind to your PostCSS configuration
+- create 'postcss.config.js' file
+- and change into as ES6 export
+
+export default {
+    plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
+    }
+}
+
+3. Configure your template paths
+- in tailwind.config.js file
+
+export default {
+  content: [ "./src/**/*.{html,js}" ],
+  ...
+}
+
+4. Add the Tailwind directives to your CSS
+- create main css file to use tailwind
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+5. link to html file with main css that use tailwind
+<link rel="stylesheet" href="./css/main.css" type="text/css" />
+
+npm run build
+npm run dev
+
+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+=> Install Date fns ( javascript dates )
+https://date-fns.org/docs/Getting-Started
+
+1. installation
+npm install date-fns --save
+
+2. start use
+import { ... } from 'date-fns';
+
+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+=> Install Font awesome
+
+1. installation     // get version 6
+npm install @fortawesome/fontawesome-free
+
+2. start use
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
+
+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+=> Install express server js
+
+npm install express     (or)    npm install express@latest
+
+
+=> import
+import express from 'express'
+
+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+=> Deploy on cloud server
+
+1. create repo public/private in github
+
+2. 
+
+
+
+
+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+

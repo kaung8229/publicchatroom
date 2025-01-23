@@ -1,0 +1,1 @@
+import{A as o}from"./main-w8iOHUi_.js";const e=document.getElementById("resetpasswordform"),m=document.getElementById("msg");e.addEventListener("submit",t=>{t.preventDefault();const s=e.querySelector("#resetemail").value.trim(),{resetPassword:r}=o();r(s,m)});

@@ -1,0 +1,1 @@
+import{A as u}from"./main-w8iOHUi_.js";const e=document.getElementById("signupform");e.addEventListener("submit",t=>{t.preventDefault();const r=e.querySelector("#fullname").value.trim(),o=e.querySelector("#email").value.trim(),s=e.querySelector("#password").value.trim();u().registerUser(r,o,s)});
